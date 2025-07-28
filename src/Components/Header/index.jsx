@@ -1,22 +1,45 @@
+import {useContext} from 'react'
+import {Link, withRouter} from 'react-router-dom'
+import Cookies from 'js-cookie'
 import {AiOutlineShoppingCart} from 'react-icons/ai'
+
+import CartContext from '../../Context/CartContext'
 
 import './index.css'
 
-const Header = ({cartItems, restaurantName}) => (
-  <header className="nav-header">
-    <h1 className="logo-heading">{restaurantName}</h1>
-    <div className="cart-icon-link">
-      <p className="my-orders-text">My Orders</p>
+const Header = props => {
+  const {cartList, restaurantName} = useContext(CartContext)
 
-      <button type="button" className="cart-icon-btn" data-testId="cart">
-        <AiOutlineShoppingCart className="cart-icon" />
-      </button>
+  const onLogout = () => {
+    const {history} = props
+    Cookies.remove('jwt_token')
+    history.replace('/login')
+  }
 
-      <p className="cart-count-badge">
-        {cartItems.reduce((acc, item) => acc + item.quantity, 0)}
-      </p>
-    </div>
-  </header>
-)
+  return (
+    <header className="nav-header">
+      <Link to="/">
+        <h1 className="logo-heading">{restaurantName}</h1>
+      </Link>
 
-export default Header
+      <div className="cart-icon-link">
+        <p className="my-orders-text">My Orders</p>
+
+        <Link to="/cart">
+          <button type="button" className="cart-icon-btn" data-testId="cart">
+            <AiOutlineShoppingCart className="cart-icon" />
+            {cartList.length > 0 && (
+              <span className="cart-count-badge">{cartList.length}</span>
+            )}
+          </button>
+        </Link>
+
+        <button type="button" className="logout-btn" onClick={onLogout}>
+          Logout
+        </button>
+      </div>
+    </header>
+  )
+}
+
+export default withRouter(Header)

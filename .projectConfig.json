@@ -1,1 +1,10 @@
-{"ignoredFilesOrFolders":[],"openFiles":["restaurantApp/src/App.js","restaurantApp/src/Components/Home/index.jsx","restaurantApp/src/Components/DishItem/index.jsx","restaurantApp/src/Components/Header/index.jsx"],"fileToBeOpened":"restaurantApp/src/Components/Header/index.css"}
+{
+  "ignoredFilesOrFolders": [],
+  "openFiles": [
+    "restaurantApp/src/App.js",
+    "restaurantApp/src/Components/Home/index.jsx",
+    "restaurantApp/src/Components/DishItem/index.jsx",
+    "restaurantApp/src/Components/Header/index.jsx"
+  ],
+  "fileToBeOpened": "restaurantApp/src/Components/Header/index.css"
+}

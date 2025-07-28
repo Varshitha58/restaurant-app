@@ -124,6 +124,30 @@
   font-size: 14px;
   font-weight: 500;
 }
+.add-to-cart-btn {
+  border: none;
+  border-radius: 6px;
+  margin: 5px 0;
+  background-color: rgb(86, 15, 216);
+  color: white;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.add-to-cart-btn:hover {
+  background-color: rgb(23, 4, 105);
+  transform: translateY(-2px);
+}
+
+.add-to-cart-btn:active {
+  transform: scale(0.98);
+}
 
 /* No stacking on small screens */
 @media (max-width: 768px) {
@@ -145,5 +169,10 @@
   .dish-currency-price,
   .dish-calories {
     font-size: 14px;
+  }
+
+  .add-to-cart-btn {
+    font-size: 12px;
+    padding: 6px 12px;
   }
 }

@@ -1,11 +1,9 @@
+import {useState, useContext, useEffect} from 'react'
+import CartContext from '../../Context/CartContext'
+
 import './index.css'
 
-const DishItem = ({
-  dishDetails,
-  cartItems,
-  addItemToCart,
-  removeItemFromCart,
-}) => {
+const DishItem = ({dishDetails}) => {
   const {
     dishId,
     dishName,
@@ -19,12 +17,28 @@ const DishItem = ({
     dishAvailability,
   } = dishDetails
 
-  const onIncreaseQuantity = () => addItemToCart(dishDetails)
-  const onDecreaseQuantity = () => removeItemFromCart(dishDetails)
+  const {cartList, addCartItem} = useContext(CartContext)
 
-  const getQuantity = () => {
-    const cartItem = cartItems.find(item => item.dishId === dishId)
-    return cartItem ? cartItem.quantity : 0
+  const existingCartItem = cartList.find(item => item.dishId === dishId)
+  const initialQty = existingCartItem ? existingCartItem.quantity : 0
+
+  const [quantity, setQuantity] = useState(initialQty)
+
+  useEffect(() => {
+    if (existingCartItem) {
+      setQuantity(existingCartItem.quantity)
+    }
+  }, [existingCartItem])
+
+  const onIncreaseQuantity = () => setQuantity(prev => prev + 1)
+  const onDecreaseQuantity = () => {
+    setQuantity(prev => (prev > 0 ? prev - 1 : 0))
+  }
+
+  const onAddItemToCart = () => {
+    if (quantity > 0) {
+      addCartItem({...dishDetails, quantity})
+    }
   }
 
   const renderControllerButton = () => (
@@ -32,7 +46,7 @@ const DishItem = ({
       <button className="button" type="button" onClick={onDecreaseQuantity}>
         -
       </button>
-      <p className="quantity">{getQuantity()}</p>
+      <p className="quantity">{quantity}</p>
       <button className="button" type="button" onClick={onIncreaseQuantity}>
         +
       </button>
@@ -58,6 +72,16 @@ const DishItem = ({
         )}
         {addonCat.length !== 0 && (
           <p className="addon-availability-text">Customizations available</p>
+        )}
+
+        {quantity > 0 && (
+          <button
+            type="button"
+            className="add-to-cart-btn mt-2"
+            onClick={onAddItemToCart}
+          >
+            ADD TO CART
+          </button>
         )}
       </div>
 
