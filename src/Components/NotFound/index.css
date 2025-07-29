@@ -1,0 +1,19 @@
+.not-found-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.not-found-image {
+  width: 220px;
+}
+
+.not-found-container h1 {
+  font-family: 'Roboto';
+  font-size: 35px;
+  font-weight: 600;
+  color: #232323;
+  margin: 24px;
+}

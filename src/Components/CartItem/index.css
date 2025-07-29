@@ -1,0 +1,84 @@
+/* Cart Item Container */
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #e0e0e0;
+  border-radius: 10px;
+  padding: 16px;
+  margin-bottom: 16px;
+  background-color: #ffffff;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* Dish Image */
+.cart-item-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+/* Dish Details */
+.cart-item-details {
+  flex-grow: 1;
+  margin-left: 16px;
+}
+
+.cart-item-name {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin: 0 0 6px;
+}
+
+.cart-item-price {
+  font-size: 16px;
+  font-weight: 500;
+  color: #2b8a3e;
+  margin: 0;
+}
+
+/* Quantity Controls */
+.control-btn-grp {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.control-btn {
+  width: 30px;
+  height: 30px;
+  font-size: 18px;
+  font-weight: bold;
+  border: 1px solid #ccc;
+  background-color: white;
+  color: #333;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.control-btn:hover {
+  background-color: #f0f0f0;
+}
+
+/* Quantity Number */
+.control-btn-grp p {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* Remove (Trash Icon) */
+.remove-item-btn {
+  background: none;
+  border: none;
+  color: #d9534f;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+
+.remove-item-btn:hover {
+  color: #b52b27;
+}
